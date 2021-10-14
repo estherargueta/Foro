@@ -1,0 +1,71 @@
+package com.unah.ejerciciosjava;
+
+import java.util.Random;
+import java.util.Scanner;
+
+/*
+Investigue el objeto Random de java y desarrolle un juego en el cual el usuario
+debe adivinar un numero generado en un rango de 1 a 20 con un límite de tres
+intentos, adicional a esto cuando termine el juego el programa le debe realizar
+la pregunta al usuario si quiere seguir jugando para reiniciar el juego.
+
+El usuario debe adivinar un numero generado de forma aleatoria en un rango de 20 números.
+El usuario tendrá un total de 3 intentos para adivinar el numero, 
+cuando el juego se gane o pierda se debe solicitar al usuario si desea continual jugando o no.
+Datos adicionales el juego debe solicitar el nombre de la persona que esta jugando y debe llevar
+un conteo de las partidas ganadas y perdidas
+*/
+
+public class QuintaOperacion{
+
+    public static void main (String[] args){
+    
+        Scanner leer = new Scanner(System.in);
+        Random NumAleatorio = new Random();
+        
+        int valor = 1 + NumAleatorio.nextInt(20);
+        
+        
+        int intentos = 0;
+        int x = 0;
+        int aciertos= 0;
+        int desaciertos = 0;
+        
+        System.out.println("Ingrese su nombre: ");
+        String nombre = leer.nextLine();
+        
+        while (intentos <= 2 && x != valor){
+        
+            intentos ++;
+            
+            System.out.println("Intente adivinar el numero entre un rango de 1 a 20: ");
+            x = leer.nextInt();
+            
+            if (x == valor){
+                System.out.println(" Felicidades!! Acertaste al intento " + intentos);
+                aciertos++;
+                
+            }
+            else 
+                System.out.println("Tienes " + intentos + " de 3");
+            
+            if(intentos > 2){
+                
+                System.out.println("Suerte a la proxima amigo ");
+                desaciertos++;
+               System.out.println("Quieres jugar de nuevo (1=si / 2=no)?");
+        int resp = leer.nextInt();
+        
+        if (resp == 1){
+        intentos = 0;
+        }
+        else 
+            intentos = 5; 
+            }
+               
+            }
+        System.out.println( nombre + " tu umero de aciertos fue: " + aciertos);
+        System.out.println(nombre + " tu numero de desaciertos: " + desaciertos);
+        
+        }
+}
